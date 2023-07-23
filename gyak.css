@@ -1,0 +1,20 @@
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  div {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    margin: 5px;
+    font-size: 20px;
+    cursor: pointer;
+  }
