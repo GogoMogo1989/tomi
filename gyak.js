@@ -68,7 +68,7 @@
 
   fuzzBizz(20) */
 
-
+/* 
   function decreaseNumber(divId) {
     const div = document.getElementById(divId);
     if (div) {
@@ -87,12 +87,88 @@
         }
       }
     }
+  } */
+  
+  /* function insertHyphens(number) {
+    const digits = number.toString().split('');
+    let result = '';
+  
+    for (let i = 0; i < digits.length; i++) {
+      result += digits[i];
+      
+      if (i % 2 === 1 && i !== digits.length - 1) {
+        result += '-';
+      }
+    }
+  
+    return result;
   }
   
+  const inputNumber = prompt("Kérem, adjon meg egy számot:");
+  const formattedNumber = insertHyphens(inputNumber);
+  console.log(formattedNumber);  */
+
+
+/*   const input = [
+    {
+      name: "Tibi",
+      age: 13,
+    },
+    {
+      name: "Feri",
+      age: 56,
+    },
+    {
+      name: "Juli",
+      age: 45,
+    },
+    {
+      name: "Margit",
+      age: 67,
+    },
+  ];
+  
+  function calculateAgeStats(input) {
+  
+    const ages = input.map(person => person.age);
+    const youngestAge = Math.min(...ages);
+    const oldestAge = Math.max(...ages);
+    const ageDifference = oldestAge - youngestAge;
+  
+    return [youngestAge, oldestAge, ageDifference];
+  }
+  
+  const ageStats = calculateAgeStats(input);
+  console.log(ageStats); 
   
   
   
+   */
+/* 
+  function calculateSquaredSum(numbers) {
+    const squaredSum = numbers.reduce((accumulator, currentNumber) => {
+      return accumulator + currentNumber ** 2;
+    }, 0);
   
+    return squaredSum;
+  }
+  
+  const input = [2, 10, 6];
+  const squaredSum = calculateSquaredSum(input);
+  console.log(squaredSum);
+  
+ */
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    const animalList = ["dog", "cat", "giraffe", "elephant"];
+    const ul = document.getElementById("animal-list");
+  
+    animalList.forEach(animal => {
+      const li = document.createElement("li");
+      li.textContent = animal;
+      ul.appendChild(li);
+    });
+  });
   
   
   
