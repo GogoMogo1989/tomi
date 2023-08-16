@@ -179,21 +179,29 @@
   
     searchButton.addEventListener("click", () => {
       const word = wordInput.value;
-        const apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
-        
-        fetch(apiUrl)
-          .then(response => response.json())
-          .then(data => {
-           data.map((value) => {
-            resultDiv.innerHTML = `<p>Word: ${value.word}</p>`;
-           })
-          })
-          .catch(error => {
-            console.error("An error occurred:", error);
+      const apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
+  
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          let htmlContent = ""; 
+  
+          data.map(value => {
+            console.log(value)
+            htmlContent += `<p>Word: ${value.phonetic}</p>`;
+            value.meanings.map(meaning => {
+              htmlContent += `<ul>${meaning.partOfSpeech}</ul><br>`;
+            });
           });
-    
+  
+          resultDiv.innerHTML = htmlContent;
+        })
+        .catch(error => {
+          console.error("An error occurred:", error);
+        });
     });
   });
+  
   
   
   
