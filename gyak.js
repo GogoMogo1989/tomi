@@ -159,7 +159,7 @@
   
  */
   
-  document.addEventListener("DOMContentLoaded", function() {
+/*   document.addEventListener("DOMContentLoaded", function() {
     const animalList = ["dog", "cat", "giraffe", "elephant"];
     const ul = document.getElementById("animal-list");
   
@@ -169,9 +169,29 @@
       ul.appendChild(li);
     });
   });
+   */
   
   
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchButton = document.getElementById("searchButton");
+    const wordInput = document.getElementById("wordInput");
+    const resultDiv = document.getElementById("result");
   
+    searchButton.addEventListener("click", () => {
+      const word = wordInput.value;
+        const apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
+        
+        fetch(apiUrl)
+          .then(response => response.json())
+          .then(data => {
+              console.log(data)
+          })
+          .catch(error => {
+            console.error("An error occurred:", error);
+          });
+    
+    });
+  });
   
   
   
