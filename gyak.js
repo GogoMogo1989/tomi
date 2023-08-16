@@ -184,7 +184,9 @@
         fetch(apiUrl)
           .then(response => response.json())
           .then(data => {
-              console.log(data)
+           data.map((value) => {
+            resultDiv.innerHTML = `<p>Word: ${value.word}</p>`;
+           })
           })
           .catch(error => {
             console.error("An error occurred:", error);
