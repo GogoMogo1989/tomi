@@ -1,4 +1,4 @@
-body {
+/* body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -17,4 +17,22 @@ body {
     margin: 5px;
     font-size: 20px;
     cursor: pointer;
-  }
+  } */
+
+  .category-button {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.category-button.red {
+    background-color: red;
+    color: white;
+}
+
+
+.product {
+  display: none;
+}

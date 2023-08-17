@@ -201,7 +201,7 @@
         });
     });
   }); */
-
+/* 
   
   const shopData = [
       {
@@ -220,11 +220,11 @@
           price: 22.3,
           description:
               "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
-          category: "men's clothing",
+          category: "men's clothing123",
           image: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
           rating: { rate: 4.1, count: 259 },
       },
-    ]
+    ] */
   
 /*     function printAllProducts(products) {
       products.map(product => {
@@ -248,7 +248,7 @@
 
   printCheaperThan(100, shopData) */
 
-  function getCheapestProduct(products) {
+/*   function getCheapestProduct(products) {
     return products.reduce((cheapestPrice, product) => {
         if (cheapestPrice === null || product.price < cheapestPrice) {
             return product.price;
@@ -257,8 +257,119 @@
     }, null);
 }
 const cheapestPrice = getCheapestProduct(shopData);
-console.log("The cheapest product price:", cheapestPrice);
+console.log("The cheapest product price:", cheapestPrice); */
 
+/* function render(products) {
+  let result = document.getElementById("result");
+  let htmlContent =""
+
+  products.map(product => {
+      htmlContent += `<div>
+                          <h2>${product.title}</h2>
+                          <p><strong>Category:</strong> ${product.category}</p>
+                          <p><strong>Price:</strong> $${product.price}</p>
+                          <p><strong>Description:</strong> ${product.description}</p>
+                          <img src="${product.image}" alt="${product.title}" style="max-width: 200px;">
+                      </div>`;
+  });
+
+  result.innerHTML= htmlContent;
+}
+
+render(shopData) */
+
+/* function getUniqueCategories(products) {
+  const uniqueCategories = [];
   
+  products.forEach(product => {
+      if (!uniqueCategories.includes(product.category)) {
+          uniqueCategories.push(product.category);
+      }
+  });
+
+  console.log(uniqueCategories);
+}
+
+getUniqueCategories(shopData) */
+
+/* function drawCategories(categories) {
+  const categoryButtonsContainer = document.getElementById("category-buttons");
+
+  categories.forEach(product => {
+      const button = document.createElement("button");
+      button.className = "category-button";
+      button.textContent = product.category;
+      button.addEventListener("click", () => {
+          const existingRedButton = document.querySelector(".category-button.red");
+          if (existingRedButton) {
+              existingRedButton.classList.remove("red");
+          }
+          button.classList.add("red");  
+      });
+      categoryButtonsContainer.appendChild(button);
+  });
+}
+
+drawCategories(shopData) */
+
+shopData = []
+function renderFromAPI() {
+  fetch('https://fakestoreapi.com/products')
+      .then(response => response.json())
+      .then(products => {
+        shopData = products; 
+        drawCategories(shopData);
+      })
+      .catch(error => {
+          console.error('Hopp, hopp!', error);
+      });
+}
+
+
+function drawCategories(categories) {
+  const categoryButtonsContainer = document.getElementById("category-buttons");
+
+  categories.forEach(category => {
+      const button = document.createElement("button");
+      button.className = "category-button";
+      button.textContent = category.category;
+      button.addEventListener("click", event => {
+          const existingRedButton = document.querySelector(".category-button.red");
+          if (existingRedButton) {
+              existingRedButton.classList.remove("red");
+          }
+          button.classList.add("red");
+          renderProductsByCategory(event.target.textContent);
+      });
+      categoryButtonsContainer.appendChild(button);
+  });
+}
+
+function renderProductsByCategory(selectedCategory) {
+  const filteredProducts = shopData.filter(product => product.category === selectedCategory);
+  render(filteredProducts);
+}
+
+function render(products) {
+  let result = document.getElementById("result");
+  let htmlContent = "";
+
+  products.forEach(product => {
+      htmlContent += `<div>
+                          <h2>${product.title}</h2>
+                          <p><strong>Category:</strong> ${product.category}</p>
+                          <p><strong>Price:</strong> $${product.price}</p>
+                          <p><strong>Description:</strong> ${product.description}</p>
+                          <img src="${product.image}" alt="${product.title}" style="max-width: 200px;">
+                      </div>`;
+  });
+
+  result.innerHTML = htmlContent;
+}
+
+
+
+renderFromAPI()
+
   
   
